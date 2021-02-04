@@ -6,7 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.view.SurfaceView
 
-abstract class GameView : SurfaceView, Runnable {
+class GameView : SurfaceView, Runnable {
 
     private var thread : Thread? = null
     private var isPlaying : Boolean? = null
@@ -56,7 +56,10 @@ abstract class GameView : SurfaceView, Runnable {
         if (holder.surface.isValid){
             var canvas : Canvas = holder.lockCanvas()
             //canvas.drawBitmap(background1!!.background, background1!!.x, background1!!.y, paint)
-            canvas.drawBitmap(background1!!.background, background1!!.x, background1!!.y, paint)
+            canvas.drawBitmap(background1!!.background!!, background1!!.x.toFloat(), background1!!.y.toFloat(), paint)
+            canvas.drawBitmap(background2!!.background!!, background2!!.x.toFloat(), background2!!.y.toFloat(), paint)
+
+            holder.unlockCanvasAndPost(canvas)
         }
     }
 
