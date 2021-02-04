@@ -15,11 +15,15 @@ class GameView : SurfaceView, Runnable {
     private var paint : Paint? = null
     private var screenX : Int? = null
     private var screenY : Int? = null
+    private var screenRatioX : Float? = null
+    private var screenRatioY : Float? = null
 
     constructor(context: Context, screenX : Int, screenY : Int) : super(context){
 
         this.screenX = screenX
         this.screenY = screenY
+        screenRatioX = 2340f/screenX
+        screenRatioY = 1080f/screenY
 
         background1 = Background(screenX, screenY, resources)
         background2 = Background(screenX, screenY, resources)
@@ -39,8 +43,8 @@ class GameView : SurfaceView, Runnable {
 
     fun update(){
 
-        background1!!.x -= 10
-        background2!!.x -= 10
+        background1!!.x -= 10 * screenRatioX!!.toInt()
+        background2!!.x -= 10 * screenRatioX!!.toInt()
 
         if (background1!!.x + background1!!.background!!.width < 0){
             background1!!.x = screenX!!

@@ -1,5 +1,6 @@
 package com.example.roll
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,13 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val rollButton = findViewById<Button>(R.id.rollButton)
-//        val resultsTextViev = findViewById<TextView>(R.id.howMuch)
-//        val seekBar = findViewById<SeekBar>(R.id.seekBar)
-
-//        rollButton.setOnClickListener{
-//            val rand = Random().nextInt(seekBar.progress) + 1
-//            resultsTextViev.text = rand.toString()
-//        }
+        //startActivity(Intent(this@MainActivity, GameActivity.class))
+        findViewById<TextView>(R.id.play).setOnClickListener {
+            startActivity(Intent(this@MainActivity, GameActivity::class.java))
+        }
     }
 }
